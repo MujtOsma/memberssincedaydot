@@ -1140,15 +1140,15 @@ function NewsletterPage() {
 
         <form onSubmit=${submit} class="space-y-5 reveal reveal-d3" noValidate>
           <div>
-            <label class="f-label" for="nl-name">Your Name</label>
+            <label class="f-label" htmlFor="nl-name">Your Name</label>
             <input id="nl-name" class="f-input" type="text" placeholder="First name" value=${form.name} onInput=${e=>set('name',e.target.value)}/>
           </div>
           <div>
-            <label class="f-label" for="nl-email">Email Address</label>
+            <label class="f-label" htmlFor="nl-email">Email Address</label>
             <input id="nl-email" class="f-input" type="email" placeholder="you@email.com" value=${form.email} onInput=${e=>set('email',e.target.value)}/>
           </div>
           <div>
-            <label class="f-label" for="nl-pref">I mainly want</label>
+            <label class="f-label" htmlFor="nl-pref">I mainly want</label>
             <select id="nl-pref" class="f-input f-select" value=${form.pref} onChange=${e=>set('pref',e.target.value)}>
               <option value="drops">Drop alerts (first access)</option>
               <option value="community">Community & events</option>
@@ -1319,16 +1319,16 @@ function AccountPage({ go }) {
         <form onSubmit=${isLogin?login:signup} class="space-y-4" noValidate>
           ${!isLogin && html`
             <div>
-              <label class="f-label" for="ac-name">Full Name</label>
+              <label class="f-label" htmlFor="ac-name">Full Name</label>
               <input id="ac-name" class="f-input" type="text" placeholder="Your name" value=${form.name} onInput=${e=>setF('name',e.target.value)}/>
             </div>
           `}
           <div>
-            <label class="f-label" for="ac-email">Email</label>
+            <label class="f-label" htmlFor="ac-email">Email</label>
             <input id="ac-email" class="f-input" type="email" placeholder="you@email.com" value=${form.email} onInput=${e=>setF('email',e.target.value)}/>
           </div>
           <div>
-            <label class="f-label" for="ac-pw">Password</label>
+            <label class="f-label" htmlFor="ac-pw">Password</label>
             <input id="ac-pw" class="f-input" type="password" placeholder=${isLogin?'Your password':'Min. 6 characters'} value=${form.password} onInput=${e=>setF('password',e.target.value)}/>
           </div>
           ${err && html`<p class="text-red-600 text-xs font-mono">${err}</p>`}
@@ -1460,50 +1460,50 @@ function Checkout({ go, onOrder }) {
                 <h2 class="font-display text-2xl uppercase">Contact</h2>
                 <div class="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label class="f-label" for="ch-fn">First Name</label>
+                    <label class="f-label" htmlFor="ch-fn">First Name</label>
                     <input id="ch-fn" class="f-input ${err.firstName?'border-red-500':''}" type="text" value=${form.firstName} onInput=${e=>setF('firstName',e.target.value)}/>
                     ${err.firstName&&html`<p class="text-red-500 text-xs mt-1">${err.firstName}</p>`}
                   </div>
                   <div>
-                    <label class="f-label" for="ch-ln">Last Name</label>
+                    <label class="f-label" htmlFor="ch-ln">Last Name</label>
                     <input id="ch-ln" class="f-input ${err.lastName?'border-red-500':''}" type="text" value=${form.lastName} onInput=${e=>setF('lastName',e.target.value)}/>
                     ${err.lastName&&html`<p class="text-red-500 text-xs mt-1">${err.lastName}</p>`}
                   </div>
                 </div>
                 <div>
-                  <label class="f-label" for="ch-em">Email</label>
+                  <label class="f-label" htmlFor="ch-em">Email</label>
                   <input id="ch-em" class="f-input ${err.email?'border-red-500':''}" type="email" value=${form.email} onInput=${e=>setF('email',e.target.value)}/>
                   ${err.email&&html`<p class="text-red-500 text-xs mt-1">${err.email}</p>`}
                 </div>
                 <div>
-                  <label class="f-label" for="ch-ph">Phone (optional)</label>
+                  <label class="f-label" htmlFor="ch-ph">Phone (optional)</label>
                   <input id="ch-ph" class="f-input" type="tel" value=${form.phone} onInput=${e=>setF('phone',e.target.value)}/>
                 </div>
 
                 <h2 class="font-display text-2xl uppercase pt-4">Shipping</h2>
                 <div>
-                  <label class="f-label" for="ch-addr">Address</label>
+                  <label class="f-label" htmlFor="ch-addr">Address</label>
                   <input id="ch-addr" class="f-input ${err.address?'border-red-500':''}" type="text" placeholder="Street address" value=${form.address} onInput=${e=>setF('address',e.target.value)}/>
                   ${err.address&&html`<p class="text-red-500 text-xs mt-1">${err.address}</p>`}
                 </div>
                 <div>
-                  <label class="f-label" for="ch-apt">Apt / Suite (optional)</label>
+                  <label class="f-label" htmlFor="ch-apt">Apt / Suite (optional)</label>
                   <input id="ch-apt" class="f-input" type="text" value=${form.apt} onInput=${e=>setF('apt',e.target.value)}/>
                 </div>
                 <div class="grid sm:grid-cols-3 gap-4">
                   <div>
-                    <label class="f-label" for="ch-city">City</label>
+                    <label class="f-label" htmlFor="ch-city">City</label>
                     <input id="ch-city" class="f-input ${err.city?'border-red-500':''}" type="text" value=${form.city} onInput=${e=>setF('city',e.target.value)}/>
                     ${err.city&&html`<p class="text-red-500 text-xs mt-1">${err.city}</p>`}
                   </div>
                   <div>
-                    <label class="f-label" for="ch-prov">Province</label>
+                    <label class="f-label" htmlFor="ch-prov">Province</label>
                     <select id="ch-prov" class="f-input f-select" value=${form.province} onChange=${e=>setF('province',e.target.value)}>
                       ${PROVINCES.map(p=>html`<option key=${p} value=${p}>${p}</option>`)}
                     </select>
                   </div>
                   <div>
-                    <label class="f-label" for="ch-post">Postal Code</label>
+                    <label class="f-label" htmlFor="ch-post">Postal Code</label>
                     <input id="ch-post" class="f-input ${err.postal?'border-red-500':''}" type="text" placeholder="A1A 1A1" maxLength="7" value=${form.postal} onInput=${e=>setF('postal',e.target.value)}/>
                     ${err.postal&&html`<p class="text-red-500 text-xs mt-1">${err.postal}</p>`}
                   </div>
@@ -1518,25 +1518,25 @@ function Checkout({ go, onOrder }) {
                   DEMO MODE — No real payment is processed. Use any card number.
                 </div>
                 <div>
-                  <label class="f-label" for="ch-cn">Name on Card</label>
+                  <label class="f-label" htmlFor="ch-cn">Name on Card</label>
                   <input id="ch-cn" class="f-input ${err.cardName?'border-red-500':''}" type="text" value=${form.cardName} onInput=${e=>setF('cardName',e.target.value)}/>
                   ${err.cardName&&html`<p class="text-red-500 text-xs mt-1">${err.cardName}</p>`}
                 </div>
                 <div>
-                  <label class="f-label" for="ch-cnum">Card Number</label>
+                  <label class="f-label" htmlFor="ch-cnum">Card Number</label>
                   <input id="ch-cnum" class="f-input f-mono ${err.cardNum?'border-red-500':''}" type="text" inputMode="numeric" placeholder="0000 0000 0000 0000" maxLength="19"
                          value=${form.cardNum} onInput=${e=>setF('cardNum',fmtCard(e.target.value))}/>
                   ${err.cardNum&&html`<p class="text-red-500 text-xs mt-1">${err.cardNum}</p>`}
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                   <div>
-                    <label class="f-label" for="ch-exp">Expiry</label>
+                    <label class="f-label" htmlFor="ch-exp">Expiry</label>
                     <input id="ch-exp" class="f-input ${err.expiry?'border-red-500':''}" type="text" inputMode="numeric" placeholder="MM/YY" maxLength="5"
                            value=${form.expiry} onInput=${e=>setF('expiry',fmtExpiry(e.target.value))}/>
                     ${err.expiry&&html`<p class="text-red-500 text-xs mt-1">${err.expiry}</p>`}
                   </div>
                   <div>
-                    <label class="f-label" for="ch-cvv">CVV</label>
+                    <label class="f-label" htmlFor="ch-cvv">CVV</label>
                     <input id="ch-cvv" class="f-input ${err.cvv?'border-red-500':''}" type="text" inputMode="numeric" placeholder="123" maxLength="4"
                            value=${form.cvv} onInput=${e=>setF('cvv',e.target.value.replace(/\D/g,'').slice(0,4))}/>
                     ${err.cvv&&html`<p class="text-red-500 text-xs mt-1">${err.cvv}</p>`}
