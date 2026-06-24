@@ -1,0 +1,298 @@
+/* ═══════════════════════════════════════════════════════════════
+   SINCE DAY DOT — Global Styles
+   ════════════════════════════════════════════════════════════════
+   CSS VARIABLE QUICK-EDIT:
+   Change --color-* to retheme the entire site instantly.
+   Change --font-* to swap typefaces site-wide.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --color-ink:        #0D0D0D;
+  --color-bone:       #F2EDE4;
+  --color-gold:       #C4963A;
+  --color-stone:      #7A7570;
+  --color-chalk:      #FAFAF8;
+  --color-gold-light: #E8C97A;
+
+  --font-display: 'Oswald', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--color-bone);
+  color: var(--color-ink);
+  overflow-x: hidden;
+}
+
+/* ── Ticker marquee ───────────────────────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track {
+  animation: marquee 36s linear infinite;
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+}
+.ticker-track:hover { animation-play-state: paused; }
+
+/* ── Scroll reveal ────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+
+/* ── Image fade-in ────────────────────────────────────────────── */
+.img-fade { opacity: 0; transition: opacity .55s ease; }
+.img-fade.loaded { opacity: 1; }
+
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero-wrap {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.08) 0%,
+    rgba(0,0,0,.48) 50%,
+    rgba(0,0,0,.88) 100%
+  );
+}
+
+/* ── Nav underline ────────────────────────────────────────────── */
+.nav-link { position: relative; padding-bottom: 2px; }
+.nav-link::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width .22s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* ── Cart drawer ──────────────────────────────────────────────── */
+.cart-drawer {
+  transform: translateX(100%);
+  transition: transform .38s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+}
+.cart-drawer.is-open { transform: translateX(0); }
+
+/* ── Mobile menu ──────────────────────────────────────────────── */
+.mobile-menu { max-height: 0; overflow: hidden; transition: max-height .34s cubic-bezier(.4,0,.2,1); }
+.mobile-menu.is-open { max-height: 560px; }
+
+/* ── Accordion ────────────────────────────────────────────────── */
+.acc-body { max-height: 0; overflow: hidden; transition: max-height .3s cubic-bezier(.4,0,.2,1); }
+.acc-body.is-open { max-height: 600px; }
+
+/* ── Product card ─────────────────────────────────────────────── */
+.product-card { cursor: pointer; }
+.card-img-wrap { overflow: hidden; position: relative; }
+.card-img-wrap img { transition: transform .65s cubic-bezier(.4,0,.2,1); }
+.product-card:hover .card-img-wrap img { transform: scale(1.06); }
+
+.quick-add {
+  opacity: 0; transform: translateY(8px);
+  transition: opacity .22s ease, transform .22s ease;
+  pointer-events: none;
+}
+.product-card:hover .quick-add {
+  opacity: 1; transform: translateY(0);
+  pointer-events: all;
+}
+
+/* ── Lookbook tiles ───────────────────────────────────────────── */
+.lb-tile { overflow: hidden; position: relative; cursor: pointer; }
+.lb-tile img { transition: transform .65s cubic-bezier(.4,0,.2,1); width: 100%; height: 100%; object-fit: cover; }
+.lb-tile:hover img { transform: scale(1.06); }
+.lb-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0);
+  transition: background .3s ease;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10;
+}
+.lb-tile:hover .lb-overlay { background: rgba(0,0,0,.38); }
+.lb-label {
+  opacity: 0; transform: translateY(8px);
+  transition: opacity .25s ease, transform .25s ease;
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-size: .8rem;
+  text-align: center;
+}
+.lb-tile:hover .lb-label { opacity: 1; transform: translateY(0); }
+
+/* ── Story image ──────────────────────────────────────────────── */
+.story-img { overflow: hidden; }
+.story-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .8s cubic-bezier(.4,0,.2,1);
+}
+.story-img:hover img { transform: scale(1.04); }
+
+/* ── Size pills ───────────────────────────────────────────────── */
+.sz-pill {
+  border: 1px solid rgba(13,13,13,.2);
+  padding: .5rem 1rem;
+  font-size: .72rem; letter-spacing: .12em;
+  text-transform: uppercase;
+  font-family: var(--font-body); font-weight: 500;
+  cursor: pointer; background: transparent; color: var(--color-ink);
+  transition: background .15s, border-color .15s, color .15s;
+  line-height: 1;
+}
+.sz-pill:hover:not(.out):not(.sel) { background: var(--color-ink); color: #fff; border-color: var(--color-ink); }
+.sz-pill.sel  { background: var(--color-ink); color: #fff; border-color: var(--color-ink); }
+.sz-pill.out  { opacity: .28; cursor: not-allowed; text-decoration: line-through; }
+
+/* ── Color swatches ───────────────────────────────────────────── */
+.swatch {
+  width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  border: 2px solid transparent; cursor: pointer;
+  transition: transform .15s, border-color .15s;
+}
+.swatch:hover { transform: scale(1.1); }
+.swatch.sel   { border-color: var(--color-ink); transform: scale(1.07); }
+
+/* ── Qty controls ─────────────────────────────────────────────── */
+.qty-btn {
+  width: 2.6rem; height: 2.6rem;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; cursor: pointer;
+  border: none; background: transparent; color: var(--color-ink);
+  user-select: none; transition: background .15s;
+}
+.qty-btn:hover { background: rgba(13,13,13,.08); }
+
+/* ── Scrollbars ───────────────────────────────────────────────── */
+.drawer-scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+.drawer-scroll::-webkit-scrollbar { width: 4px; }
+.drawer-scroll::-webkit-scrollbar-track { background: transparent; }
+.drawer-scroll::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+.thumb-strip { overflow-x: auto; scrollbar-width: none; }
+.thumb-strip::-webkit-scrollbar { display: none; }
+
+/* ── Forms ────────────────────────────────────────────────────── */
+.f-input {
+  width: 100%;
+  border: 1px solid rgba(13,13,13,.18);
+  padding: .85rem 1rem;
+  font-family: var(--font-body); font-size: .875rem;
+  color: var(--color-ink); background: var(--color-chalk);
+  outline: none; transition: border-color .2s;
+}
+.f-input:focus { border-color: var(--color-ink); }
+.f-input::placeholder { color: rgba(13,13,13,.3); }
+.f-label {
+  display: block;
+  font-size: .6rem; letter-spacing: .18em;
+  text-transform: uppercase; font-weight: 600;
+  color: rgba(13,13,13,.42); margin-bottom: .42rem;
+  font-family: var(--font-body);
+}
+.f-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%230D0D0D' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+/* ── Step indicator ───────────────────────────────────────────── */
+.step-dot {
+  width: 2rem; height: 2rem; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .68rem; font-weight: 700;
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+}
+
+/* ── Testimonial card ─────────────────────────────────────────── */
+.testi-card {
+  border: 1px solid rgba(13,13,13,.08);
+  padding: 2rem;
+  transition: box-shadow .3s, transform .3s;
+}
+.testi-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,.07);
+  transform: translateY(-2px);
+}
+
+/* ── Countdown ────────────────────────────────────────────────── */
+.countdown-unit { font-family: var(--font-mono); }
+
+/* ── Member card ──────────────────────────────────────────────── */
+.founder-card { transition: transform .3s ease, box-shadow .3s ease; }
+.founder-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,.1); }
+
+/* ── Mobile ATB bar ───────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .mobile-atb { animation: slideUp .25s ease both; }
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+/* ── iOS safe areas ───────────────────────────────────────────── */
+.safe-pb    { padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); }
+.safe-pb-lg { padding-bottom: max(1.25rem, env(safe-area-inset-bottom)); }
+
+/* ── Transitions ──────────────────────────────────────────────── */
+.t-btn { transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+
+/* ── Focus ────────────────────────────────────────────────────── */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 1px;
+}
+
+/* ── Reduced motion ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal          { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .img-fade        { opacity: 1 !important; transition: none !important; }
+  .ticker-track    { animation-play-state: paused !important; }
+  .cart-drawer,
+  .mobile-menu,
+  .acc-body        { transition: none !important; }
+  .card-img-wrap img,
+  .lb-tile img,
+  .story-img img   { transition: none !important; }
+}
