@@ -237,7 +237,7 @@ const UserIc = ({ size=20 }) => html`<svg width=${size} height=${size} viewBox="
    ═══════════════════════════════════════════════════════════════ */
 function useReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll('.reveal');
+    const els = document.querySelectorAll('.reveal, .women-panel');
     const io  = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } }),
       { threshold: 0.12 }
@@ -560,6 +560,98 @@ function Home({ go }) {
             View All
           </button>
         </div>
+      </section>
+
+      <!-- WOMEN'S EXCLUSIVE DROP -->
+      <section class="flex flex-col lg:flex-row overflow-hidden">
+
+        <!-- Dark left panel -->
+        <div class="bg-ink text-chalk flex flex-col justify-center px-8 sm:px-14 py-20 lg:py-0 relative z-10"
+             style=${{flex:'0 0 42%', minHeight:'55svh'}}>
+          <div class="hidden lg:block absolute top-0 bottom-0 right-0 w-16 bg-ink z-20"
+               style=${{transform:'skewX(-2.5deg) translateX(60%)', transformOrigin:'top center'}}/>
+          <div class="max-w-xs">
+            <p class="font-mono text-gold/70 text-[9px] tracking-[0.4em] uppercase mb-4 reveal">· Women's Edit ·</p>
+            <h2 class="font-display font-extrabold text-chalk uppercase leading-[0.88] reveal reveal-d1"
+                style=${{fontSize:'clamp(38px,4.2vw,66px)'}}>
+              Built<br/>Different.
+            </h2>
+            <div class="flex items-center gap-3 my-5 reveal reveal-d2">
+              <div class="h-px w-8 bg-gold"/>
+              <p class="font-mono text-chalk/30 text-[8px] tracking-[0.25em] uppercase">Coming Soon</p>
+            </div>
+            <p class="font-body text-chalk/40 text-[13px] leading-relaxed reveal reveal-d2">
+              Crafted for women who move with purpose. Exclusively available to Members.
+            </p>
+            <button class="mt-8 font-mono text-[9px] tracking-[0.28em] uppercase px-5 py-2.5 text-chalk/30 border border-chalk/15 cursor-not-allowed reveal reveal-d3">
+              ⌀ Access Pending
+            </button>
+          </div>
+        </div>
+
+        <!-- Pink right panel — sweeps in from right on scroll -->
+        <div class="women-panel relative flex-1 overflow-hidden" style=${{minHeight:'80svh'}}>
+          <div class="absolute inset-0" style=${{background:'linear-gradient(150deg,#6D2A3F 0%,#A04D68 40%,#C47888 80%,#D4909E 100%)'}}/>
+          <div class="absolute inset-0 mix-blend-overlay opacity-25" style=${{
+            backgroundImage:`url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E")`,
+            backgroundSize:'200px 200px'
+          }}/>
+          <div class="hidden lg:block absolute inset-y-0 left-0 w-24 z-10"
+               style=${{background:'linear-gradient(to right,#0D0D0D,transparent)'}}/>
+
+          <!-- Corner ribbon -->
+          <div class="absolute top-0 right-0 overflow-hidden z-30" style=${{width:'156px',height:'156px'}}>
+            <div class="absolute font-mono font-bold text-ink text-[7.5px] tracking-[0.22em] uppercase text-center"
+                 style=${{
+                   background:'#C4963A',
+                   top:'37px',right:'-48px',
+                   transform:'rotate(45deg)',
+                   padding:'7px 60px',
+                   whiteSpace:'nowrap'
+                 }}>
+              Members Only
+            </div>
+          </div>
+
+          <!-- Product cards -->
+          <div class="absolute inset-0 flex items-center justify-center px-6 lg:px-10">
+            <div class="grid grid-cols-3 gap-3 sm:gap-4 w-full max-w-lg">
+              ${[
+                {num:'I',   name:'Gym Set', sub:'Seamless Collection'},
+                {num:'II',  name:'Capris',  sub:'Movement Series'},
+                {num:'III', name:'Sets',    sub:'Complete Look'},
+              ].map(({num,name,sub},i) => html`
+                <div key=${i} class="relative overflow-hidden"
+                     style=${{
+                       aspectRatio:'9/14',
+                       background:'rgba(0,0,0,0.32)',
+                       backdropFilter:'blur(10px)',
+                       border:'1px solid rgba(255,255,255,0.13)',
+                     }}>
+                  <div class="absolute inset-[1px]" style=${{border:'1px solid rgba(255,255,255,0.05)'}}/>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center p-3 text-center">
+                    <p class="font-mono font-bold leading-none"
+                       style=${{fontSize:'clamp(22px,4.2vw,44px)',color:'rgba(255,255,255,0.18)'}}>${num}</p>
+                    <div style=${{width:'18px',height:'1px',background:'rgba(196,150,58,0.45)',margin:'10px auto'}}/>
+                    <p class="font-display font-bold text-chalk uppercase text-[9px] sm:text-[11px] tracking-widest leading-tight">${name}</p>
+                    <p class="font-mono text-[6.5px] sm:text-[7.5px] tracking-[0.18em] uppercase mt-1"
+                       style=${{color:'rgba(255,255,255,0.28)'}}>${sub}</p>
+                  </div>
+                  <div class="absolute bottom-2.5 inset-x-0 flex justify-center">
+                    <p class="font-mono text-[6px] sm:text-[6.5px] tracking-[0.22em] uppercase"
+                       style=${{color:'rgba(255,255,255,0.18)'}}>Reveal Pending</p>
+                  </div>
+                </div>
+              `)}
+            </div>
+          </div>
+
+          <div class="absolute bottom-5 inset-x-0 flex justify-center z-20">
+            <p class="font-mono text-[7.5px] tracking-[0.42em] uppercase"
+               style=${{color:'rgba(255,255,255,0.22)'}}>Women's Exclusive · Dropping 2025</p>
+          </div>
+        </div>
+
       </section>
 
       <!-- LOOKBOOK GRID -->

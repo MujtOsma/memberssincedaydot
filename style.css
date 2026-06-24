@@ -333,6 +333,15 @@ select:focus-visible {
   margin-bottom: 2rem;
 }
 
+/* ── Women's panel sweep (clips in from right on scroll) ──────── */
+.women-panel {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.6s var(--ease-out-expo);
+}
+.women-panel.is-visible {
+  clip-path: inset(0 0% 0 0);
+}
+
 /* ── Reduced motion ────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .reveal          { opacity: 1 !important; transform: none !important; transition: none !important; }
@@ -345,4 +354,5 @@ select:focus-visible {
   .card-img-wrap img,
   .lb-tile img,
   .story-img img   { transition: none !important; }
+  .women-panel     { clip-path: none !important; transition: none !important; }
 }
