@@ -473,59 +473,31 @@ function Home({ go }) {
   return html`
     <div>
       <!-- HERO -->
-      <section class="min-h-screen bg-ink text-chalk flex flex-col md:grid" style=${{gridTemplateColumns:'55% 45%'}}>
+      <section class="min-h-screen bg-ink text-chalk flex flex-col justify-between px-6 sm:px-12 pt-28 pb-12">
 
-        <!-- LEFT: Brand identity panel -->
-        <div class="flex flex-col justify-between px-6 sm:px-10 pt-24 pb-10 min-h-[65svh] md:min-h-screen">
-          <p class="font-mono text-chalk/30 text-[10px] tracking-[0.34em] uppercase">Members Apparel Collective · Toronto</p>
+        <p class="font-mono text-chalk/30 text-[10px] tracking-[0.34em] uppercase">Members Apparel Collective · Toronto</p>
 
-          <div class="reveal">
-            <h1 class="brand-title text-chalk">
-              Members<br/>Apparel<br/>Collective
-            </h1>
-            <div class="flex items-center gap-4 mt-6 mb-5">
-              <div class="h-px w-14 bg-gold flex-shrink-0"/>
-              <p class="font-mono text-chalk/35 text-[10px] tracking-[0.38em] uppercase">Est. Since Day Dot · Day Zero</p>
-            </div>
-            <div class="flex flex-wrap items-center gap-5 mt-8 reveal reveal-d1">
-              <button onClick=${()=>go('shop')}
-                      class="border border-chalk/30 text-chalk font-body font-medium tracking-[0.14em] uppercase px-8 py-3.5 text-xs hover:bg-chalk hover:text-ink transition-colors t-btn">
-                Shop Collection
-              </button>
-              <button onClick=${()=>go('story')}
-                      class="text-chalk/50 font-body text-xs tracking-[0.14em] uppercase hover:text-chalk transition-colors">
-                Our Story →
-              </button>
-            </div>
+        <div class="reveal">
+          <h1 class="brand-title text-chalk">
+            Members<br/>Apparel<br/>Collective
+          </h1>
+          <div class="flex items-center gap-4 mt-6 mb-5">
+            <div class="h-px w-14 bg-gold flex-shrink-0"/>
+            <p class="font-mono text-chalk/35 text-[10px] tracking-[0.38em] uppercase">Est. Since Day Dot · Day Zero</p>
           </div>
-
-          <p class="font-mono text-chalk/20 text-[10px] tracking-[0.28em] uppercase">#${CONFIG.memberSeed}+ Members worldwide</p>
+          <div class="flex flex-wrap items-center gap-5 mt-8 reveal reveal-d1">
+            <button onClick=${()=>go('shop')}
+                    class="border border-chalk/30 text-chalk font-body font-medium tracking-[0.14em] uppercase px-8 py-3.5 text-xs hover:bg-chalk hover:text-ink transition-colors t-btn">
+              Shop Collection
+            </button>
+            <button onClick=${()=>go('story')}
+                    class="text-chalk/50 font-body text-xs tracking-[0.14em] uppercase hover:text-chalk transition-colors">
+              Our Story →
+            </button>
+          </div>
         </div>
 
-        <!-- RIGHT: Confirmed product photos grid (desktop) -->
-        <div class="hidden md:grid gap-0.5" style=${{gridTemplateColumns:'1fr 1fr',gridTemplateRows:'1fr 1fr'}}>
-          ${[
-            ['photo-1556821840-3a63f15732ce','Day One Hoodie'],
-            ['photo-1521572163474-6864f9cf17ab','Carry All Tee'],
-            ['photo-1591257447430-6e9638b50afc','XI Crewneck'],
-            ['photo-1588850561407-ed78c282e89b','Origin Cap'],
-          ].map(([id,label],i) => html`
-            <div key=${i} class="overflow-hidden relative group" onClick=${()=>go('shop')}>
-              <img src=${'https://images.unsplash.com/'+id+'?w=700&q=80'}
-                   alt=${label}
-                   class="w-full h-full object-cover img-fade group-hover:scale-105 transition-transform duration-700 cursor-pointer"/>
-              <div class="absolute bottom-0 left-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p class="font-mono text-chalk text-[9px] tracking-widest uppercase">${label}</p>
-              </div>
-            </div>
-          `)}
-        </div>
-
-        <!-- Mobile: single product photo strip -->
-        <div class="md:hidden h-56 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=900&q=80"
-               alt="Day One Hoodie" class="w-full h-full object-cover img-fade"/>
-        </div>
+        <p class="font-mono text-chalk/20 text-[10px] tracking-[0.28em] uppercase">#${CONFIG.memberSeed}+ Members worldwide</p>
 
       </section>
 

@@ -10,8 +10,8 @@
   --color-chalk: #FAFAF8;
   --color-dim:   #141414;
 
-  --font-logo:    'Cormorant Garamond', serif;
-  --font-display: 'Space Grotesk', sans-serif;
+  --font-logo:    'Syne', sans-serif;
+  --font-display: 'Syne', sans-serif;
   --font-body:    'Space Grotesk', sans-serif;
   --font-mono:    'Space Mono', monospace;
 
@@ -83,12 +83,12 @@ body {
 
 /* Cormorant Garamond brand title */
 .brand-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 600;
-  font-size: clamp(52px, 14vw, 136px);
+  font-family: 'Syne', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: clamp(48px, 13vw, 128px);
   line-height: 0.88;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 /* Photo grid in hero */
