@@ -1,7 +1,6 @@
-import { useState, useEffect, useContext, createContext, useRef, useCallback } from 'react';
-import { createRoot } from 'react-dom/client';
-import htm from 'htm';
-import * as React from 'react';
+/* globals loaded via UMD CDN tags in index.html: React, ReactDOM, htm */
+const { useState, useEffect, useContext, createContext, useRef, useCallback } = React;
+const { createRoot } = ReactDOM;
 
 const html = htm.bind(React.createElement);
 

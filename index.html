@@ -8,36 +8,33 @@
   <meta property="og:description" content="Built by eleven. Carried by all."/>
   <title>Since Day Dot</title>
 
-  <!-- ═══ FONTS — Change family names here to swap typefaces ═══ -->
+  <!-- ═══ FONTS ═══ -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 
-  <!-- ═══ TAILWIND — Config must come before CDN script ═══ -->
+  <!-- ═══ TAILWIND — CDN must load before tailwind.config is set ═══ -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    /* ═══ TAILWIND THEME — Edit colors and fonts here ═══ */
-    tailwind = {
-      config: {
-        theme: {
-          extend: {
-            colors: {
-              ink:   '#0D0D0D',   /* near-black — primary text/bg */
-              bone:  '#F2EDE4',   /* warm off-white — page background */
-              gold:  '#C4963A',   /* warm gold — accent / CTA */
-              stone: '#7A7570',   /* warm gray — secondary text */
-              chalk: '#FAFAF8',   /* near-white — cards/panels */
-            },
-            fontFamily: {
-              display: ['Oswald', 'sans-serif'],
-              body:    ['DM Sans', 'sans-serif'],
-              mono:    ['"Space Mono"', 'monospace'],
-            },
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink:   '#0D0D0D',
+            bone:  '#F2EDE4',
+            gold:  '#C4963A',
+            stone: '#7A7570',
+            chalk: '#FAFAF8',
+          },
+          fontFamily: {
+            display: ['Oswald', 'sans-serif'],
+            body:    ['DM Sans', 'sans-serif'],
+            mono:    ['"Space Mono"', 'monospace'],
           },
         },
       },
     };
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- ═══ STYLES ═══ -->
   <link rel="stylesheet" href="style.css"/>
@@ -46,18 +43,11 @@
 
   <div id="root"></div>
 
-  <!-- ═══ MODULE IMPORTS — React via CDN, no build step needed ═══ -->
-  <script type="importmap">
-  {
-    "imports": {
-      "react":            "https://esm.sh/react@18.3.1",
-      "react-dom":        "https://esm.sh/react-dom@18.3.1?deps=react@18.3.1",
-      "react-dom/client": "https://esm.sh/react-dom@18.3.1/client?deps=react@18.3.1",
-      "htm":              "https://esm.sh/htm@3"
-    }
-  }
-  </script>
+  <!-- ═══ React 18 + ReactDOM + htm — UMD builds, no import map needed ═══ -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/htm@3/dist/htm.js"></script>
 
-  <script type="module" src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
