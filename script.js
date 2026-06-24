@@ -527,7 +527,7 @@ function Home({ go }) {
             { img:'https://images.unsplash.com/photo-1485218126466-34e6392ec754?w=600&q=80', label:'XI Crewneck', span:'' },
             { img:'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80', label:'Origin Cap', span:'col-span-2' },
           ].map((t,i) => html`
-            <div key=${i} class="lb-tile ${t.span} reveal reveal-d${i+1}" style="aspect-ratio:${t.span.includes('row')?'':'1/1'}">
+            <div key=${i} class="lb-tile ${t.span} reveal reveal-d${i+1}" style=${{aspectRatio:t.span.includes('row')?undefined:'1/1'}}>
               <img src=${t.img} alt=${t.label} class="img-fade"/>
               <div class="lb-overlay">
                 <div class="lb-label">${t.label}</div>
@@ -767,7 +767,7 @@ function PDP({ product, go }) {
                 ${product.colors.map(c => html`
                   <button key=${c.name} onClick=${()=>setSelColor(c.name)}
                           class="swatch ${selColor===c.name?'sel':''}"
-                          style="background:${c.label}"
+                          style=${{background:c.label}}
                           aria-label=${c.name}/>
                 `)}
               </div>
@@ -852,7 +852,7 @@ function StoryPage({ go }) {
   return html`
     <div class="min-h-screen pt-20">
       <!-- Hero -->
-      <div class="hero-wrap" style="min-height:60svh">
+      <div class="hero-wrap" style=${{minHeight:'60svh'}}>
         <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=1400&q=85" alt="The eleven" class="hero-img img-fade"/>
         <div class="hero-overlay"/>
         <div class="relative z-10 max-w-6xl mx-auto px-6 pb-16 pt-32 w-full">
