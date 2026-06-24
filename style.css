@@ -10,8 +10,8 @@
   --color-chalk: #FAFAF8;
   --color-dim:   #141414;
 
-  --font-display: 'Barlow Condensed', sans-serif;
-  --font-body:    'Inter', sans-serif;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Space Grotesk', sans-serif;
   --font-mono:    'Space Mono', monospace;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -78,17 +78,20 @@ body {
 .hero-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(
-    160deg,
-    rgba(0,0,0,.92) 0%,
-    rgba(0,0,0,.68) 55%,
-    rgba(0,0,0,.80) 100%
+    to right,
+    rgba(0,0,0,.95) 0%,
+    rgba(0,0,0,.88) 38%,
+    rgba(0,0,0,.52) 62%,
+    rgba(0,0,0,.18) 100%
   );
 }
+@media (max-width: 767px) {
+  .hero-overlay { background: rgba(0,0,0,.78); }
+}
 .hero-headline {
-  font-size: clamp(70px, 15vw, 210px);
+  font-size: clamp(58px, 11vw, 152px);
   line-height: 0.87;
-  font-weight: 900;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
 }
 
 /* ── Stats bar ─────────────────────────────────────────────────── */

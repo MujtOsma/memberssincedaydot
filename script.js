@@ -362,8 +362,9 @@ function Nav({ go, page }) {
         <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
 
           <!-- Logo -->
-          <button onClick=${()=>go('home')} class="font-display font-bold tracking-widest uppercase text-lg ${dark?'text-chalk':'text-ink'} hover:text-gold transition-colors">
-            SDD
+          <button onClick=${()=>go('home')} class="font-display tracking-widest uppercase text-lg ${dark?'text-chalk':'text-ink'} hover:text-gold transition-colors leading-none flex flex-col items-start">
+            <span class="text-xl leading-none">MAC</span>
+            <span class="font-mono text-[8px] tracking-[0.22em] opacity-60 normal-case" style=${{fontFamily:'var(--font-mono)'}}>Members Apparel Collective</span>
           </button>
 
           <!-- Desktop links -->
@@ -447,36 +448,55 @@ function Home({ go }) {
       <!-- HERO -->
       <section class="hero-wrap">
         <img
-          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=85"
-          alt="Since Day Dot"
+          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=85"
+          alt="Members Apparel Collective"
           class="hero-img img-fade"
+          style=${{objectPosition:'center center'}}
         />
         <div class="hero-overlay"/>
         <div class="absolute inset-0 z-10 flex flex-col">
           <div class="flex-1 max-w-7xl mx-auto w-full px-6 sm:px-10 flex flex-col justify-between pt-24 pb-10">
+
+            <!-- top label -->
             <div class="flex justify-between items-center">
-              <p class="font-mono text-chalk/40 text-[10px] tracking-[0.3em] uppercase">Est. 2023 · Toronto</p>
-              <p class="font-mono text-chalk/40 text-[10px] tracking-[0.3em] uppercase hidden sm:block">Member-Driven</p>
+              <p class="font-mono text-chalk/35 text-[10px] tracking-[0.32em] uppercase">Members Apparel Collective</p>
+              <p class="font-mono text-chalk/35 text-[10px] tracking-[0.32em] uppercase hidden sm:block">Toronto · CA</p>
             </div>
-            <div>
-              <h1 class="hero-headline font-display font-black text-chalk uppercase reveal">
-                SINCE<br/>DAY<br/>DOT
+
+            <!-- brand name + est. -->
+            <div class="max-w-2xl reveal">
+              <h1 class="hero-headline font-display text-chalk uppercase">
+                MEMBERS<br/>APPAREL<br/>COLLECTIVE
               </h1>
-              <div class="mt-10 flex flex-wrap items-center gap-6 reveal reveal-d1">
+
+              <!-- gold separator -->
+              <div class="flex items-center gap-3 my-5">
+                <div class="h-px w-14 bg-gold"/>
+                <div class="h-px w-5 bg-gold/30"/>
+              </div>
+
+              <p class="font-mono text-chalk/50 text-[11px] tracking-[0.42em] uppercase mb-9 reveal reveal-d1">
+                Est. Since Day Dot &nbsp;·&nbsp; Day Zero
+              </p>
+
+              <div class="flex flex-wrap items-center gap-5 reveal reveal-d2">
                 <button onClick=${()=>go('shop')}
-                        class="bg-chalk text-ink font-display font-black tracking-[0.18em] uppercase px-10 py-4 text-sm hover:bg-gold hover:text-chalk transition-colors t-btn">
+                        class="bg-chalk text-ink font-display tracking-[0.16em] uppercase px-10 py-4 text-sm hover:bg-gold hover:text-chalk transition-colors t-btn">
                   Shop Collection
                 </button>
                 <button onClick=${()=>go('story')}
-                        class="text-chalk font-display font-black tracking-[0.18em] uppercase text-sm hover:text-gold transition-colors flex items-center gap-2">
+                        class="text-chalk font-display tracking-[0.16em] uppercase text-sm hover:text-gold transition-colors flex items-center gap-2">
                   Our Story →
                 </button>
               </div>
             </div>
+
+            <!-- bottom bar -->
             <div class="flex justify-between items-end">
-              <p class="font-mono text-chalk/30 text-[10px] tracking-[0.25em] uppercase">#${CONFIG.memberSeed}+ Members worldwide</p>
-              <p class="font-mono text-chalk/30 text-[10px] tracking-[0.25em] uppercase hidden sm:block">Community-First · Day One or Never</p>
+              <p class="font-mono text-chalk/25 text-[10px] tracking-[0.28em] uppercase">#${CONFIG.memberSeed}+ Members worldwide</p>
+              <p class="font-mono text-chalk/25 text-[10px] tracking-[0.28em] uppercase hidden sm:block">Community · Collective · Day Zero</p>
             </div>
+
           </div>
         </div>
       </section>
@@ -625,7 +645,8 @@ function Home({ go }) {
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
           <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
             <div>
-              <p class="font-display text-chalk text-xl tracking-widest uppercase font-bold mb-3">SDD</p>
+              <p class="font-display text-chalk text-2xl tracking-widest uppercase mb-0.5">MAC</p>
+              <p class="font-mono text-chalk/40 text-[9px] tracking-widest uppercase mb-3">Members Apparel Collective</p>
               <p class="text-sm leading-relaxed mb-6">${CONFIG.tagline}</p>
               <div class="flex gap-4">
                 <a href=${CONFIG.instagram} target="_blank" rel="noopener" class="text-chalk/50 hover:text-gold transition-colors" aria-label="Instagram"><${IGIcon}/></a>
