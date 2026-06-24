@@ -2,7 +2,11 @@
 const { useState, useEffect, useContext, createContext, useRef, useCallback } = React;
 const { createRoot } = ReactDOM;
 
-const html = htm.bind(React.createElement);
+// htm passes '' for <> fragments; map that to React.Fragment
+function h(type, props, ...children) {
+  return React.createElement(type || React.Fragment, props, ...children);
+}
+const html = htm.bind(h);
 
 /* ═══════════════════════════════════════════════════════════════
    CONFIG — Edit brand details, links, pricing rules here
