@@ -473,31 +473,31 @@ function Home({ go }) {
   return html`
     <div>
       <!-- HERO -->
-      <section class="min-h-screen bg-ink text-chalk flex flex-col justify-between px-6 sm:px-12 pt-28 pb-12">
+      <section class="min-h-screen bg-ink text-chalk flex flex-col justify-between px-6 sm:px-12 pt-24 pb-10">
 
-        <p class="font-mono text-chalk/30 text-[10px] tracking-[0.34em] uppercase">Members Apparel Collective · Toronto</p>
+        <p class="font-mono text-chalk/30 text-[10px] tracking-[0.3em] uppercase">Members Apparel Collective · Toronto</p>
 
-        <div class="reveal">
+        <div>
           <h1 class="brand-title text-chalk">
             Members<br/>Apparel<br/>Collective
           </h1>
-          <div class="flex items-center gap-4 mt-6 mb-5">
-            <div class="h-px w-14 bg-gold flex-shrink-0"/>
-            <p class="font-mono text-chalk/35 text-[10px] tracking-[0.38em] uppercase">Est. Since Day Dot · Day Zero</p>
+          <div class="flex items-center gap-4 mt-5 mb-4">
+            <div class="h-px w-10 bg-gold flex-shrink-0"/>
+            <p class="font-mono text-chalk/35 text-[9px] tracking-[0.35em] uppercase">Est. Since Day Dot · Day Zero</p>
           </div>
-          <div class="flex flex-wrap items-center gap-5 mt-8 reveal reveal-d1">
+          <div class="flex flex-wrap items-center gap-4 mt-6">
             <button onClick=${()=>go('shop')}
-                    class="border border-chalk/30 text-chalk font-body font-medium tracking-[0.14em] uppercase px-8 py-3.5 text-xs hover:bg-chalk hover:text-ink transition-colors t-btn">
+                    class="border border-chalk/30 text-chalk font-body font-medium tracking-[0.12em] uppercase px-6 py-3 text-xs hover:bg-chalk hover:text-ink transition-colors t-btn">
               Shop Collection
             </button>
             <button onClick=${()=>go('story')}
-                    class="text-chalk/50 font-body text-xs tracking-[0.14em] uppercase hover:text-chalk transition-colors">
+                    class="text-chalk/50 font-body text-xs tracking-[0.12em] uppercase hover:text-chalk transition-colors">
               Our Story →
             </button>
           </div>
         </div>
 
-        <p class="font-mono text-chalk/20 text-[10px] tracking-[0.28em] uppercase">#${CONFIG.memberSeed}+ Members worldwide</p>
+        <p class="font-mono text-chalk/20 text-[9px] tracking-[0.25em] uppercase">#${CONFIG.memberSeed}+ Members worldwide</p>
 
       </section>
 
