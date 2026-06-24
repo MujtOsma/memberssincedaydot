@@ -415,15 +415,15 @@ function Nav({ go, page }) {
    TICKER
    ═══════════════════════════════════════════════════════════════ */
 function Ticker() {
-  const words = ['Since Day Dot','Built by Eleven','Carried by All','Member-Driven','Community-First','Day One or Never','Since Day Dot','Built by Eleven','Carried by All'];
+  const words = ['Since Day Dot','Built by Eleven','Carried by All','Member-Driven','Community-First','Day One or Never','XI','The Archive','Since Day Dot','Built by Eleven','Carried by All'];
   const track = words.concat(words).map((w,i) => html`
-    <span key=${i} class="inline-flex items-center gap-6 px-6">
-      <span class="font-display text-xs tracking-widest uppercase">${w}</span>
-      <span class="w-1 h-1 rounded-full bg-gold inline-block"/>
+    <span key=${i} class="inline-flex items-center gap-8 px-8">
+      <span class="font-display font-black text-sm tracking-[0.2em] uppercase">${w}</span>
+      <span class="w-1 h-1 rounded-full bg-gold inline-block flex-shrink-0"/>
     </span>
   `);
   return html`
-    <div class="overflow-hidden bg-ink text-chalk py-2.5">
+    <div class="overflow-hidden bg-ink text-chalk py-3">
       <div class="ticker-track">${track}</div>
     </div>
   `;
@@ -447,29 +447,36 @@ function Home({ go }) {
       <!-- HERO -->
       <section class="hero-wrap">
         <img
-          src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1400&q=85"
-          srcSet="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&q=80 800w,
-                  https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1400&q=85 1400w"
-          sizes="100vw"
-          alt="Since Day Dot hero"
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=85"
+          alt="Since Day Dot"
           class="hero-img img-fade"
         />
         <div class="hero-overlay"/>
-        <div class="relative z-10 max-w-6xl mx-auto px-6 pb-20 pt-32 w-full">
-          <p class="font-mono text-gold text-xs tracking-widest uppercase mb-4 reveal">Member #${CONFIG.memberSeed}+</p>
-          <h1 class="font-display font-bold text-chalk text-5xl sm:text-7xl lg:text-8xl uppercase leading-none mb-6 reveal reveal-d1">
-            Since<br/>Day Dot
-          </h1>
-          <p class="text-chalk/80 text-lg max-w-lg mb-8 reveal reveal-d2">${CONFIG.subTagline}</p>
-          <div class="flex flex-wrap gap-4 reveal reveal-d3">
-            <button onClick=${()=>go('shop')}
-                    class="bg-gold text-chalk font-display tracking-widest uppercase px-8 py-4 text-sm hover:bg-gold/90 transition-colors t-btn">
-              Shop Now
-            </button>
-            <button onClick=${()=>go('story')}
-                    class="border border-chalk/60 text-chalk font-display tracking-widest uppercase px-8 py-4 text-sm hover:bg-chalk/10 transition-colors t-btn">
-              Our Story
-            </button>
+        <div class="absolute inset-0 z-10 flex flex-col">
+          <div class="flex-1 max-w-7xl mx-auto w-full px-6 sm:px-10 flex flex-col justify-between pt-24 pb-10">
+            <div class="flex justify-between items-center">
+              <p class="font-mono text-chalk/40 text-[10px] tracking-[0.3em] uppercase">Est. 2023 · Toronto</p>
+              <p class="font-mono text-chalk/40 text-[10px] tracking-[0.3em] uppercase hidden sm:block">Member-Driven</p>
+            </div>
+            <div>
+              <h1 class="hero-headline font-display font-black text-chalk uppercase reveal">
+                SINCE<br/>DAY<br/>DOT
+              </h1>
+              <div class="mt-10 flex flex-wrap items-center gap-6 reveal reveal-d1">
+                <button onClick=${()=>go('shop')}
+                        class="bg-chalk text-ink font-display font-black tracking-[0.18em] uppercase px-10 py-4 text-sm hover:bg-gold hover:text-chalk transition-colors t-btn">
+                  Shop Collection
+                </button>
+                <button onClick=${()=>go('story')}
+                        class="text-chalk font-display font-black tracking-[0.18em] uppercase text-sm hover:text-gold transition-colors flex items-center gap-2">
+                  Our Story →
+                </button>
+              </div>
+            </div>
+            <div class="flex justify-between items-end">
+              <p class="font-mono text-chalk/30 text-[10px] tracking-[0.25em] uppercase">#${CONFIG.memberSeed}+ Members worldwide</p>
+              <p class="font-mono text-chalk/30 text-[10px] tracking-[0.25em] uppercase hidden sm:block">Community-First · Day One or Never</p>
+            </div>
           </div>
         </div>
       </section>
@@ -477,14 +484,33 @@ function Home({ go }) {
       <!-- TICKER -->
       <${Ticker}/>
 
+      <!-- STATS BAR -->
+      <div class="bg-chalk border-b border-ink/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+          <div class="grid grid-cols-2 sm:grid-cols-4">
+            ${[
+              { val:`${CONFIG.memberSeed}+`, label:'Members' },
+              { val:'04', label:'Drops Completed' },
+              { val:'2023', label:'Est.' },
+              { val:'XI', label:'Founders' },
+            ].map(({val,label}) => html`
+              <div key=${label} class="stat-card">
+                <p class="font-display font-black text-3xl sm:text-4xl">${val}</p>
+                <p class="font-mono text-[9px] tracking-widest uppercase text-stone mt-0.5">${label}</p>
+              </div>
+            `)}
+          </div>
+        </div>
+      </div>
+
       <!-- FEATURED PRODUCTS -->
       <section class="max-w-6xl mx-auto px-4 sm:px-6 py-20">
-        <div class="flex items-end justify-between mb-12">
+        <div class="flex items-end justify-between mb-10">
           <div>
-            <p class="font-mono text-xs text-gold tracking-widest uppercase mb-2 reveal">The Collection</p>
-            <h2 class="font-display text-4xl sm:text-5xl uppercase reveal reveal-d1">New Arrivals</h2>
+            <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">Vol. I — The Collection</p>
+            <h2 class="font-display font-black text-6xl sm:text-8xl uppercase leading-none reveal reveal-d1">New Arrivals</h2>
           </div>
-          <button onClick=${()=>go('shop')} class="hidden sm:block nav-link font-display text-xs tracking-widest uppercase text-stone hover:text-ink transition-colors reveal">
+          <button onClick=${()=>go('shop')} class="hidden sm:block nav-link font-display font-bold text-sm tracking-widest uppercase text-stone hover:text-ink transition-colors reveal">
             View All →
           </button>
         </div>
@@ -518,14 +544,14 @@ function Home({ go }) {
 
       <!-- LOOKBOOK GRID -->
       <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
-        <p class="font-mono text-xs text-gold tracking-widest uppercase mb-2 reveal">Lookbook</p>
-        <h2 class="font-display text-4xl sm:text-5xl uppercase mb-10 reveal reveal-d1">How It's Worn</h2>
+        <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">Lookbook</p>
+        <h2 class="font-display font-black text-6xl sm:text-8xl uppercase mb-10 leading-none reveal reveal-d1">How It's Worn</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
           ${[
-            { img:'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&q=80', label:'Day One Hoodie', span:'row-span-2' },
+            { img:'https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&q=80', label:'Day One Hoodie', span:'row-span-2' },
             { img:'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=600&q=80', label:'Carry All Tee', span:'' },
-            { img:'https://images.unsplash.com/photo-1485218126466-34e6392ec754?w=600&q=80', label:'XI Crewneck', span:'' },
-            { img:'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80', label:'Origin Cap', span:'col-span-2' },
+            { img:'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&q=80', label:'Founder Track Pant', span:'' },
+            { img:'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=600&q=80', label:'Origin Cap', span:'col-span-2' },
           ].map((t,i) => html`
             <div key=${i} class="lb-tile ${t.span} reveal reveal-d${i+1}" style=${{aspectRatio:t.span.includes('row')?undefined:'1/1'}}>
               <img src=${t.img} alt=${t.label} class="img-fade"/>
@@ -538,22 +564,22 @@ function Home({ go }) {
       </section>
 
       <!-- STORY TEASER -->
-      <section class="bg-ink text-chalk py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div class="story-img aspect-square reveal">
+      <section class="bg-ink text-chalk py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-0 items-stretch">
+          <div class="story-img aspect-square md:aspect-auto md:min-h-[520px] reveal">
             <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=800&q=80" alt="The eleven founders" class="img-fade"/>
           </div>
-          <div>
-            <p class="font-mono text-gold text-xs tracking-widest uppercase mb-3 reveal">XI</p>
-            <h2 class="font-display text-4xl sm:text-5xl uppercase mb-6 reveal reveal-d1">Eleven People.<br/>One Brand.</h2>
-            <p class="text-chalk/70 leading-relaxed mb-4 reveal reveal-d2">
+          <div class="flex flex-col justify-center px-0 md:px-14 py-12 md:py-0">
+            <p class="font-mono text-gold text-[10px] tracking-[0.3em] uppercase mb-4 reveal">XI — Origin Story</p>
+            <h2 class="font-display font-black text-5xl sm:text-7xl uppercase leading-[0.9] mb-8 reveal reveal-d1">Eleven<br/>People.<br/>One Brand.</h2>
+            <p class="text-chalk/60 leading-relaxed mb-4 reveal reveal-d2 text-sm">
               It started in a group chat. Eleven friends, one shared vision: clothing that meant something beyond the label. No investors. No committees. Just eleven people who decided to build something from nothing.
             </p>
-            <p class="text-chalk/70 leading-relaxed mb-8 reveal reveal-d3">
+            <p class="text-chalk/60 leading-relaxed mb-10 reveal reveal-d3 text-sm">
               Every piece we make carries that origin. The XI crest isn't decoration — it's a reminder that this brand belongs to the people who built it.
             </p>
             <button onClick=${()=>go('story')}
-                    class="border border-chalk/40 font-display tracking-widest uppercase px-8 py-3.5 text-sm hover:bg-chalk hover:text-ink transition-colors t-btn reveal reveal-d4">
+                    class="self-start border border-chalk/30 font-display font-black tracking-[0.18em] uppercase px-8 py-3.5 text-sm hover:bg-chalk hover:text-ink transition-colors t-btn reveal reveal-d4">
               Meet the Eleven →
             </button>
           </div>
@@ -561,9 +587,9 @@ function Home({ go }) {
       </section>
 
       <!-- TESTIMONIALS -->
-      <section class="max-w-6xl mx-auto px-4 sm:px-6 py-20">
-        <p class="font-mono text-xs text-gold tracking-widest uppercase mb-2 reveal text-center">Community</p>
-        <h2 class="font-display text-4xl sm:text-5xl uppercase mb-12 reveal reveal-d1 text-center">What Members Say</h2>
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 py-24">
+        <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal text-center">Community</p>
+        <h2 class="font-display font-black text-6xl sm:text-7xl uppercase mb-14 reveal reveal-d1 text-center leading-none">What Members Say</h2>
         <div class="grid md:grid-cols-3 gap-6">
           ${testimonials.map((t,i) => html`
             <div key=${i} class="testi-card reveal reveal-d${i+1}">
@@ -584,8 +610,8 @@ function Home({ go }) {
       <!-- NEWSLETTER BANNER -->
       <section class="bg-gold/10 border-t border-b border-gold/20 py-16">
         <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <p class="font-mono text-xs text-gold tracking-widest uppercase mb-2 reveal">Stay Close</p>
-          <h2 class="font-display text-3xl sm:text-4xl uppercase mb-4 reveal reveal-d1">Member Drops First</h2>
+          <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">Stay Close</p>
+          <h2 class="font-display font-black text-5xl sm:text-7xl uppercase mb-4 reveal reveal-d1 leading-none">Member<br/>Drops First</h2>
           <p class="text-stone mb-8 reveal reveal-d2">Get early access to drops, member exclusives, and behind-the-scenes. Day one privilege.</p>
           <button onClick=${()=>go('newsletter')}
                   class="bg-ink text-chalk font-display tracking-widest uppercase px-10 py-4 text-sm hover:bg-gold transition-colors t-btn reveal reveal-d3">
@@ -656,8 +682,8 @@ function Shop({ go }) {
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
         <!-- Header -->
         <div class="mb-10">
-          <p class="font-mono text-xs text-gold tracking-widest uppercase mb-2">Collection</p>
-          <h1 class="font-display text-5xl sm:text-6xl uppercase">Shop</h1>
+          <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1">Collection</p>
+          <h1 class="font-display font-black text-7xl sm:text-9xl uppercase leading-none">Shop</h1>
         </div>
 
         <!-- Filter tabs -->
@@ -855,15 +881,17 @@ function StoryPage({ go }) {
       <div class="hero-wrap" style=${{minHeight:'60svh'}}>
         <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=1400&q=85" alt="The eleven" class="hero-img img-fade"/>
         <div class="hero-overlay"/>
-        <div class="relative z-10 max-w-6xl mx-auto px-6 pb-16 pt-32 w-full">
-          <p class="font-mono text-gold text-xs tracking-widest uppercase mb-3 reveal">Est. 2023</p>
-          <h1 class="font-display font-bold text-chalk text-5xl sm:text-7xl uppercase leading-none reveal reveal-d1">Our Story</h1>
+        <div class="absolute inset-0 z-10 flex flex-col">
+          <div class="flex-1 max-w-7xl mx-auto w-full px-6 sm:px-10 flex flex-col justify-between pt-24 pb-12">
+            <p class="font-mono text-chalk/40 text-[10px] tracking-[0.3em] uppercase reveal">Est. 2023</p>
+            <h1 class="font-display font-black text-chalk text-7xl sm:text-9xl lg:text-[13vw] uppercase leading-[0.87] reveal reveal-d1">Our Story</h1>
+          </div>
         </div>
       </div>
 
       <!-- Origin -->
       <section class="max-w-4xl mx-auto px-4 sm:px-6 py-20">
-        <p class="font-display text-2xl sm:text-3xl uppercase text-gold mb-8 reveal">It started in a group chat.</p>
+        <p class="font-display font-black text-4xl sm:text-5xl uppercase text-gold mb-8 reveal leading-none">It started in a group chat.</p>
         <div class="space-y-6 text-stone leading-relaxed">
           <p class="reveal">Eleven friends. One shared obsession with clothing that actually meant something. No investors sitting at the table. No committees. Just eleven people who'd been tight since day one, deciding to build a brand from nothing.</p>
           <p class="reveal reveal-d1">We pooled what we had — skills, time, and enough conviction to fill a room. Marcus handled creative. Zara mapped out the brand. Devon drove product. The rest of us filled every gap we could find. That's what Since Day Dot is: a brand built by its own people, from the jump.</p>
@@ -874,8 +902,8 @@ function StoryPage({ go }) {
       <!-- Timeline -->
       <section class="bg-ink text-chalk py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
-          <p class="font-mono text-gold text-xs tracking-widest uppercase mb-2 reveal">Timeline</p>
-          <h2 class="font-display text-4xl uppercase mb-14 reveal reveal-d1">How We Got Here</h2>
+          <p class="font-mono text-gold text-[10px] tracking-widest uppercase mb-1 reveal">Timeline</p>
+          <h2 class="font-display font-black text-6xl sm:text-7xl uppercase mb-14 reveal reveal-d1 leading-none">How We Got Here</h2>
           ${[
             { year:'2023', event:'Eleven founders agree on the name in a group chat at 2AM.' },
             { year:'Early 2024', event:'First sample run: 50 hoodies. Sold to friends and family in under 48 hours.' },
@@ -900,8 +928,8 @@ function StoryPage({ go }) {
 
       <!-- Founders grid -->
       <section class="max-w-6xl mx-auto px-4 sm:px-6 py-20">
-        <p class="font-mono text-xs text-gold tracking-widest uppercase mb-2 reveal">The Eleven</p>
-        <h2 class="font-display text-4xl sm:text-5xl uppercase mb-12 reveal reveal-d1">Who Built This</h2>
+        <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">The Eleven</p>
+        <h2 class="font-display font-black text-6xl sm:text-8xl uppercase mb-12 reveal reveal-d1 leading-none">Who Built This</h2>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
           ${FOUNDERS.map((f,i) => html`
             <div key=${f.num} class="founder-card reveal reveal-d${(i%4)+1}">
@@ -918,8 +946,8 @@ function StoryPage({ go }) {
 
       <!-- CTA -->
       <section class="bg-gold/10 border-t border-gold/20 py-20 text-center">
-        <p class="font-mono text-xs text-gold tracking-widest uppercase mb-2 reveal">Your Turn</p>
-        <h2 class="font-display text-4xl sm:text-5xl uppercase mb-6 reveal reveal-d1">Carry It Forward</h2>
+        <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">Your Turn</p>
+        <h2 class="font-display font-black text-6xl sm:text-7xl uppercase mb-6 reveal reveal-d1 leading-none">Carry It Forward</h2>
         <p class="text-stone max-w-md mx-auto mb-8 reveal reveal-d2">You're not just buying a hoodie. You're joining the run. Every member number is a piece of the original story.</p>
         <div class="flex justify-center gap-4 flex-wrap reveal reveal-d3">
           <button onClick=${()=>go('shop')} class="bg-ink text-chalk font-display tracking-widest uppercase px-8 py-4 text-sm hover:bg-gold transition-colors t-btn">Shop Now</button>
@@ -939,8 +967,8 @@ function MembersPage({ go }) {
   return html`
     <div class="min-h-screen pt-20">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 py-16">
-        <p class="font-mono text-xs text-gold tracking-widest uppercase mb-2 reveal">Community</p>
-        <h1 class="font-display text-5xl sm:text-6xl uppercase mb-4 reveal reveal-d1">Members</h1>
+        <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">Community</p>
+        <h1 class="font-display font-black text-7xl sm:text-9xl uppercase mb-4 reveal reveal-d1 leading-none">Members</h1>
         <p class="text-stone max-w-xl mb-14 reveal reveal-d2">No gatekeeping. Every member number is a permanent part of the archive. Choose your tier and carry it forward.</p>
 
         <!-- Tiers -->
@@ -977,7 +1005,7 @@ function MembersPage({ go }) {
         <!-- Member count -->
         <div class="text-center bg-ink text-chalk py-16 reveal">
           <p class="font-mono text-gold text-xs tracking-widest uppercase mb-2">Live Count</p>
-          <p class="font-display text-7xl sm:text-8xl font-bold">${CONFIG.memberSeed}+</p>
+          <p class="font-display font-black" style=${{fontSize:'clamp(80px,14vw,180px)',lineHeight:'1'}}>${CONFIG.memberSeed}+</p>
           <p class="text-chalk/60 mt-2 font-mono text-sm tracking-wide">members and counting</p>
           <p class="text-chalk/50 text-xs mt-4 max-w-xs mx-auto">Every member number is permanent. The earlier you join, the lower your number.</p>
         </div>
@@ -1047,8 +1075,8 @@ function DropsPage({ go }) {
   return html`
     <div class="min-h-screen pt-20">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 py-16">
-        <p class="font-mono text-xs text-gold tracking-widest uppercase mb-2 reveal">Upcoming</p>
-        <h1 class="font-display text-5xl sm:text-6xl uppercase mb-4 reveal reveal-d1">Drops</h1>
+        <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">Upcoming</p>
+        <h1 class="font-display font-black text-7xl sm:text-9xl uppercase mb-4 reveal reveal-d1 leading-none">Drops</h1>
         <p class="text-stone max-w-md mb-14 reveal reveal-d2">Members get access first. Sign up for the newsletter so you never miss a drop window.</p>
 
         <div class="space-y-16">
@@ -1134,8 +1162,8 @@ function NewsletterPage() {
   return html`
     <div class="min-h-screen pt-20">
       <div class="max-w-2xl mx-auto px-4 sm:px-6 py-20">
-        <p class="font-mono text-xs text-gold tracking-widest uppercase mb-2 reveal">Inner Circle</p>
-        <h1 class="font-display text-5xl uppercase mb-4 reveal reveal-d1">Newsletter</h1>
+        <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">Inner Circle</p>
+        <h1 class="font-display font-black text-6xl sm:text-8xl uppercase mb-4 reveal reveal-d1 leading-none">Newsletter</h1>
         <p class="text-stone max-w-md mb-10 reveal reveal-d2">Drop alerts, member exclusives, and behind-the-scenes. No noise. Only signal.</p>
 
         <form onSubmit=${submit} class="space-y-5 reveal reveal-d3" noValidate>
@@ -1313,8 +1341,8 @@ function AccountPage({ go }) {
   return html`
     <div class="min-h-screen pt-20 flex items-center justify-center px-4">
       <div class="w-full max-w-md py-16">
-        <p class="font-mono text-gold text-xs tracking-widest uppercase mb-2 text-center">Account</p>
-        <h1 class="font-display text-4xl uppercase text-center mb-8">${isLogin?'Sign In':'Join SDD'}</h1>
+        <p class="font-mono text-stone text-[10px] tracking-widest uppercase mb-1 text-center">Account</p>
+        <h1 class="font-display font-black text-6xl sm:text-7xl uppercase text-center mb-8 leading-none">${isLogin?'Sign In':'Join SDD'}</h1>
 
         <form onSubmit=${isLogin?login:signup} class="space-y-4" noValidate>
           ${!isLogin && html`
