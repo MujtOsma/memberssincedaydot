@@ -563,95 +563,108 @@ function Home({ go }) {
       </section>
 
       <!-- WOMEN'S EXCLUSIVE DROP -->
-      <section class="flex flex-col lg:flex-row overflow-hidden">
+      <section class="relative overflow-hidden text-chalk" style=${{minHeight:'100svh'}}>
 
-        <!-- Dark left panel -->
-        <div class="bg-ink text-chalk flex flex-col justify-center px-8 sm:px-14 py-20 lg:py-0 relative z-10"
-             style=${{flex:'0 0 42%', minHeight:'55svh'}}>
-          <div class="hidden lg:block absolute top-0 bottom-0 right-0 w-16 bg-ink z-20"
-               style=${{transform:'skewX(-2.5deg) translateX(60%)', transformOrigin:'top center'}}/>
-          <div class="max-w-xs">
-            <p class="font-mono text-gold/70 text-[9px] tracking-[0.4em] uppercase mb-4 reveal">· Women's Edit ·</p>
-            <h2 class="font-display font-extrabold text-chalk uppercase leading-[0.88] reveal reveal-d1"
-                style=${{fontSize:'clamp(38px,4.2vw,66px)'}}>
-              Built<br/>Different.
-            </h2>
-            <div class="flex items-center gap-3 my-5 reveal reveal-d2">
-              <div class="h-px w-8 bg-gold"/>
-              <p class="font-mono text-chalk/30 text-[8px] tracking-[0.25em] uppercase">Coming Soon</p>
-            </div>
-            <p class="font-body text-chalk/40 text-[13px] leading-relaxed reveal reveal-d2">
-              Crafted for women who move with purpose. Exclusively available to Members.
-            </p>
-            <button class="mt-8 font-mono text-[9px] tracking-[0.28em] uppercase px-5 py-2.5 text-chalk/30 border border-chalk/15 cursor-not-allowed reveal reveal-d3">
-              ⌀ Access Pending
-            </button>
+        <!-- MOBILE BG: single gradient — ink fades into rose -->
+        <div class="lg:hidden absolute inset-0 z-0"
+             style=${{background:'linear-gradient(to bottom,#0D0D0D 0%,#0D0D0D 28%,#4A1828 52%,#9A4562 76%,#C07888 100%)'}}/>
+
+        <!-- DESKTOP BG: left ink slab (diagonal right edge) -->
+        <div class="hidden lg:block absolute inset-y-0 left-0 bg-ink z-0"
+             style=${{width:'46%',clipPath:'polygon(0 0,100% 0,calc(100% - 72px) 100%,0 100%)'}}/>
+
+        <!-- DESKTOP BG: pink right panel (sweeps in from right) -->
+        <div class="women-panel hidden lg:block absolute inset-0 z-0"
+             style=${{background:'linear-gradient(140deg,#6D2A3F 0%,#A04D68 42%,#C47888 80%,#D4909E 100%)'}}/>
+
+        <!-- DESKTOP: dark-to-transparent bleed over left edge of pink -->
+        <div class="hidden lg:block absolute inset-y-0 z-10 pointer-events-none"
+             style=${{left:'38%',width:'160px',background:'linear-gradient(to right,#0D0D0D,transparent)'}}/>
+
+        <!-- Grain texture (both) -->
+        <div class="absolute inset-0 z-0 opacity-20 mix-blend-overlay" style=${{
+          backgroundImage:`url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundSize:'200px 200px'
+        }}/>
+
+        <!-- Corner ribbon -->
+        <div class="absolute top-0 right-0 overflow-hidden z-30" style=${{width:'152px',height:'152px'}}>
+          <div class="absolute font-mono font-bold text-ink text-[7px] tracking-[0.2em] uppercase text-center"
+               style=${{
+                 background:'#C4963A',
+                 top:'35px',right:'-46px',
+                 transform:'rotate(45deg)',
+                 padding:'6px 58px',
+                 whiteSpace:'nowrap'
+               }}>
+            Members Only
           </div>
         </div>
 
-        <!-- Pink right panel — sweeps in from right on scroll -->
-        <div class="women-panel relative flex-1 overflow-hidden" style=${{minHeight:'80svh'}}>
-          <div class="absolute inset-0" style=${{background:'linear-gradient(150deg,#6D2A3F 0%,#A04D68 40%,#C47888 80%,#D4909E 100%)'}}/>
-          <div class="absolute inset-0 mix-blend-overlay opacity-25" style=${{
-            backgroundImage:`url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E")`,
-            backgroundSize:'200px 200px'
-          }}/>
-          <div class="hidden lg:block absolute inset-y-0 left-0 w-24 z-10"
-               style=${{background:'linear-gradient(to right,#0D0D0D,transparent)'}}/>
+        <!-- Content -->
+        <div class="relative z-20 flex flex-col lg:flex-row" style=${{minHeight:'100svh'}}>
 
-          <!-- Corner ribbon -->
-          <div class="absolute top-0 right-0 overflow-hidden z-30" style=${{width:'156px',height:'156px'}}>
-            <div class="absolute font-mono font-bold text-ink text-[7.5px] tracking-[0.22em] uppercase text-center"
-                 style=${{
-                   background:'#C4963A',
-                   top:'37px',right:'-48px',
-                   transform:'rotate(45deg)',
-                   padding:'7px 60px',
-                   whiteSpace:'nowrap'
-                 }}>
-              Members Only
+          <!-- Left / Top: text panel -->
+          <div class="flex flex-col justify-center px-8 sm:px-12 pt-24 pb-14 lg:py-0 lg:w-[46%]">
+            <p class="font-mono text-gold/60 text-[9px] tracking-[0.42em] uppercase mb-4 reveal">· Women's Edit ·</p>
+            <h2 class="font-display font-extrabold text-chalk uppercase leading-[0.88] reveal reveal-d1"
+                style=${{fontSize:'clamp(42px,9.5vw,72px)'}}>
+              Built<br/>Different
+            </h2>
+            <div class="flex items-center gap-3 mt-5 mb-4 reveal reveal-d2">
+              <div class="h-px w-8 bg-gold flex-shrink-0"/>
+              <p class="font-mono text-chalk/35 text-[8px] tracking-[0.25em] uppercase">Coming Soon</p>
             </div>
+            <p class="font-body text-chalk/45 text-sm leading-relaxed max-w-xs reveal reveal-d2">
+              Crafted for women who move with purpose. Exclusively available to Members.
+            </p>
+            <button class="mt-8 self-start font-mono text-[9px] tracking-[0.28em] uppercase px-5 py-2.5 text-chalk/30 border border-chalk/15 cursor-not-allowed reveal reveal-d3">
+              ⌀ Access Pending
+            </button>
           </div>
 
-          <!-- Product cards -->
-          <div class="absolute inset-0 flex items-center justify-center px-6 lg:px-10">
-            <div class="grid grid-cols-3 gap-3 sm:gap-4 w-full max-w-lg">
+          <!-- Right / Bottom: product cards -->
+          <div class="flex-1 flex flex-col items-center justify-center px-6 sm:px-10 pb-16 lg:pb-0">
+            <div class="grid grid-cols-3 gap-3 w-full max-w-sm lg:max-w-md">
               ${[
-                {num:'I',   name:'Gym Set', sub:'Seamless Collection'},
-                {num:'II',  name:'Capris',  sub:'Movement Series'},
-                {num:'III', name:'Sets',    sub:'Complete Look'},
+                {num:'I',   name:'Gym Set',    sub:'Seamless Collection'},
+                {num:'II',  name:'Capris',     sub:'Movement Series'},
+                {num:'III', name:'Streetwear', sub:'Y2K Edit'},
               ].map(({num,name,sub},i) => html`
-                <div key=${i} class="relative overflow-hidden"
+                <div key=${i} class="relative overflow-hidden reveal"
                      style=${{
                        aspectRatio:'9/14',
-                       background:'rgba(0,0,0,0.32)',
-                       backdropFilter:'blur(10px)',
-                       border:'1px solid rgba(255,255,255,0.13)',
+                       background:'rgba(0,0,0,0.30)',
+                       backdropFilter:'blur(12px)',
+                       border:'1px solid rgba(255,255,255,0.14)',
+                       transitionDelay: (i * 0.12) + 's'
                      }}>
                   <div class="absolute inset-[1px]" style=${{border:'1px solid rgba(255,255,255,0.05)'}}/>
-                  <div class="absolute inset-0 flex flex-col items-center justify-center p-3 text-center">
+                  <div class="absolute inset-0 flex flex-col items-center justify-center p-2 text-center">
                     <p class="font-mono font-bold leading-none"
-                       style=${{fontSize:'clamp(22px,4.2vw,44px)',color:'rgba(255,255,255,0.18)'}}>${num}</p>
-                    <div style=${{width:'18px',height:'1px',background:'rgba(196,150,58,0.45)',margin:'10px auto'}}/>
-                    <p class="font-display font-bold text-chalk uppercase text-[9px] sm:text-[11px] tracking-widest leading-tight">${name}</p>
-                    <p class="font-mono text-[6.5px] sm:text-[7.5px] tracking-[0.18em] uppercase mt-1"
-                       style=${{color:'rgba(255,255,255,0.28)'}}>${sub}</p>
+                       style=${{fontSize:'clamp(20px,5vw,42px)',color:'rgba(255,255,255,0.16)'}}>${num}</p>
+                    <div style=${{width:'16px',height:'1px',background:'rgba(196,150,58,0.5)',margin:'8px auto'}}/>
+                    <p class="font-display font-bold text-chalk uppercase leading-tight"
+                       style=${{fontSize:'clamp(8px,2.2vw,11px)',letterSpacing:'0.12em'}}>${name}</p>
+                    <p class="font-mono uppercase mt-1"
+                       style=${{fontSize:'clamp(6px,1.6vw,8px)',letterSpacing:'0.16em',color:'rgba(255,255,255,0.30)'}}>${sub}</p>
                   </div>
-                  <div class="absolute bottom-2.5 inset-x-0 flex justify-center">
-                    <p class="font-mono text-[6px] sm:text-[6.5px] tracking-[0.22em] uppercase"
-                       style=${{color:'rgba(255,255,255,0.18)'}}>Reveal Pending</p>
+                  <div class="absolute bottom-2 inset-x-0 flex justify-center">
+                    <p class="font-mono uppercase"
+                       style=${{fontSize:'clamp(5.5px,1.4vw,7px)',letterSpacing:'0.2em',color:'rgba(255,255,255,0.18)'}}>Reveal Pending</p>
                   </div>
                 </div>
               `)}
             </div>
+
+            <!-- Bottom label — clearly visible -->
+            <p class="font-mono uppercase mt-8 text-chalk/55 tracking-[0.38em]"
+               style=${{fontSize:'clamp(7px,1.8vw,9px)'}}>
+              Women's Exclusive &nbsp;·&nbsp; Dropping 2025
+            </p>
           </div>
 
-          <div class="absolute bottom-5 inset-x-0 flex justify-center z-20">
-            <p class="font-mono text-[7.5px] tracking-[0.42em] uppercase"
-               style=${{color:'rgba(255,255,255,0.22)'}}>Women's Exclusive · Dropping 2025</p>
-          </div>
         </div>
-
       </section>
 
       <!-- LOOKBOOK GRID -->
