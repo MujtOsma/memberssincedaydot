@@ -608,7 +608,7 @@ function Home({ go }) {
           <div class="flex flex-col justify-center px-8 sm:px-12 pt-24 pb-14 lg:py-0 lg:w-[46%]">
             <p class="font-mono text-gold/60 text-[9px] tracking-[0.42em] uppercase mb-4 reveal">· Women's Edit ·</p>
             <h2 class="font-display font-extrabold text-chalk uppercase leading-[0.88] reveal reveal-d1"
-                style=${{fontSize:'clamp(42px,9.5vw,72px)'}}>
+                style=${{fontSize:'clamp(30px,7.5vw,68px)'}}>
               Built<br/>Different
             </h2>
             <div class="flex items-center gap-3 mt-5 mb-4 reveal reveal-d2">
