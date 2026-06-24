@@ -131,9 +131,9 @@ const PRODUCTS = [
    FOUNDERS — 11 original members
    ═══════════════════════════════════════════════════════════════ */
 const FOUNDERS = [
-  { num:'001', name:'Marcus T.',  role:'Creative Director',   since:'Day 1',  img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80' },
-  { num:'002', name:'Zara A.',   role:'Brand Strategist',    since:'Day 1',  img:'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80' },
-  { num:'003', name:'Devon C.',  role:'Head of Product',     since:'Day 1',  img:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80' },
+  { num:'001', name:'Talal A.',  role:'Creative Director',   since:'Day 1',  img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80' },
+  { num:'002', name:'Mujtaba O.',   role:'Brand Strategist',    since:'Day 1',  img:'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80' },
+  { num:'003', name:'Catalina M.',  role:'Head of Product',     since:'Day 1',  img:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80' },
   { num:'004', name:'Priya N.',  role:'Community Lead',      since:'Day 1',  img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80' },
   { num:'005', name:'Eli B.',    role:'Art Direction',       since:'Day 1',  img:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80' },
   { num:'006', name:'Aaliyah W.',role:'Operations',          since:'Day 1',  img:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80' },
