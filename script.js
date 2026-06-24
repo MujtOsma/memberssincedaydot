@@ -431,6 +431,33 @@ function Ticker() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   BRAND LOGO SVG
+   ═══════════════════════════════════════════════════════════════ */
+function BrandLogo({ size = 260, light = false }) {
+  const c  = light ? '#FAFAF8' : '#0D0D0D';
+  const g  = '#C4963A';
+  const h  = Math.round(size * 1.18);
+  const sw = size / 260;
+  return html`
+    <svg width=${size} height=${h} viewBox="0 0 260 306" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="258" height="304" stroke=${c} strokeWidth="1.2"/>
+      <rect x="8" y="8" width="244" height="290" stroke=${g} strokeWidth="0.4" strokeDasharray="3 5"/>
+      <rect x="1" y="1" width="12" height="12" fill=${g}/>
+      <rect x="247" y="1" width="12" height="12" fill=${g}/>
+      <rect x="1" y="293" width="12" height="12" fill=${g}/>
+      <rect x="247" y="293" width="12" height="12" fill=${g}/>
+      <text x="130" y="46" textAnchor="middle" fontFamily="Space Mono, monospace" fontSize="7.5" fill=${g} letterSpacing="5">EST. DAY ZERO</text>
+      <line x1="38" y1="56" x2="222" y2="56" stroke=${c} strokeWidth="0.4" strokeOpacity="0.25"/>
+      <text x="130" y="165" textAnchor="middle" fontFamily="Space Mono, monospace" fontSize="88" fontWeight="700" fill=${c} letterSpacing="-2">XI</text>
+      <line x1="38" y1="188" x2="222" y2="188" stroke=${c} strokeWidth="0.4" strokeOpacity="0.25"/>
+      <text x="130" y="218" textAnchor="middle" fontFamily="Space Grotesk, sans-serif" fontSize="9.5" fontWeight="600" fill=${c} letterSpacing="6.5">MEMBERS</text>
+      <text x="130" y="236" textAnchor="middle" fontFamily="Space Grotesk, sans-serif" fontSize="9.5" fontWeight="600" fill=${c} letterSpacing="6.5">APPAREL</text>
+      <text x="130" y="254" textAnchor="middle" fontFamily="Space Grotesk, sans-serif" fontSize="9.5" fontWeight="600" fill=${c} letterSpacing="3.5">COLLECTIVE</text>
+    </svg>
+  `;
+}
+
+/* ═══════════════════════════════════════════════════════════════
    HOME PAGE
    ═══════════════════════════════════════════════════════════════ */
 function Home({ go }) {
@@ -446,59 +473,60 @@ function Home({ go }) {
   return html`
     <div>
       <!-- HERO -->
-      <section class="hero-wrap">
-        <img
-          src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=85"
-          alt="Members Apparel Collective"
-          class="hero-img img-fade"
-          style=${{objectPosition:'center center'}}
-        />
-        <div class="hero-overlay"/>
-        <div class="absolute inset-0 z-10 flex flex-col">
-          <div class="flex-1 max-w-7xl mx-auto w-full px-6 sm:px-10 flex flex-col justify-between pt-24 pb-10">
+      <section class="min-h-screen bg-ink text-chalk flex flex-col md:grid" style=${{gridTemplateColumns:'55% 45%'}}>
 
-            <!-- top label -->
-            <div class="flex justify-between items-center">
-              <p class="font-mono text-chalk/35 text-[10px] tracking-[0.32em] uppercase">Members Apparel Collective</p>
-              <p class="font-mono text-chalk/35 text-[10px] tracking-[0.32em] uppercase hidden sm:block">Toronto · CA</p>
+        <!-- LEFT: Brand identity panel -->
+        <div class="flex flex-col justify-between px-6 sm:px-10 pt-24 pb-10 min-h-[65svh] md:min-h-screen">
+          <p class="font-mono text-chalk/30 text-[10px] tracking-[0.34em] uppercase">Members Apparel Collective · Toronto</p>
+
+          <div class="reveal">
+            <h1 class="brand-title text-chalk">
+              Members<br/>Apparel<br/>Collective
+            </h1>
+            <div class="flex items-center gap-4 mt-6 mb-5">
+              <div class="h-px w-14 bg-gold flex-shrink-0"/>
+              <p class="font-mono text-chalk/35 text-[10px] tracking-[0.38em] uppercase">Est. Since Day Dot · Day Zero</p>
             </div>
-
-            <!-- brand name + est. -->
-            <div class="max-w-2xl reveal">
-              <h1 class="hero-headline font-display text-chalk uppercase">
-                MEMBERS<br/>APPAREL<br/>COLLECTIVE
-              </h1>
-
-              <!-- gold separator -->
-              <div class="flex items-center gap-3 my-5">
-                <div class="h-px w-14 bg-gold"/>
-                <div class="h-px w-5 bg-gold/30"/>
-              </div>
-
-              <p class="font-mono text-chalk/50 text-[11px] tracking-[0.42em] uppercase mb-9 reveal reveal-d1">
-                Est. Since Day Dot &nbsp;·&nbsp; Day Zero
-              </p>
-
-              <div class="flex flex-wrap items-center gap-5 reveal reveal-d2">
-                <button onClick=${()=>go('shop')}
-                        class="bg-chalk text-ink font-display tracking-[0.16em] uppercase px-10 py-4 text-sm hover:bg-gold hover:text-chalk transition-colors t-btn">
-                  Shop Collection
-                </button>
-                <button onClick=${()=>go('story')}
-                        class="text-chalk font-display tracking-[0.16em] uppercase text-sm hover:text-gold transition-colors flex items-center gap-2">
-                  Our Story →
-                </button>
-              </div>
+            <div class="flex flex-wrap items-center gap-5 mt-8 reveal reveal-d1">
+              <button onClick=${()=>go('shop')}
+                      class="border border-chalk/30 text-chalk font-body font-medium tracking-[0.14em] uppercase px-8 py-3.5 text-xs hover:bg-chalk hover:text-ink transition-colors t-btn">
+                Shop Collection
+              </button>
+              <button onClick=${()=>go('story')}
+                      class="text-chalk/50 font-body text-xs tracking-[0.14em] uppercase hover:text-chalk transition-colors">
+                Our Story →
+              </button>
             </div>
-
-            <!-- bottom bar -->
-            <div class="flex justify-between items-end">
-              <p class="font-mono text-chalk/25 text-[10px] tracking-[0.28em] uppercase">#${CONFIG.memberSeed}+ Members worldwide</p>
-              <p class="font-mono text-chalk/25 text-[10px] tracking-[0.28em] uppercase hidden sm:block">Community · Collective · Day Zero</p>
-            </div>
-
           </div>
+
+          <p class="font-mono text-chalk/20 text-[10px] tracking-[0.28em] uppercase">#${CONFIG.memberSeed}+ Members worldwide</p>
         </div>
+
+        <!-- RIGHT: Confirmed product photos grid (desktop) -->
+        <div class="hidden md:grid gap-0.5" style=${{gridTemplateColumns:'1fr 1fr',gridTemplateRows:'1fr 1fr'}}>
+          ${[
+            ['photo-1556821840-3a63f15732ce','Day One Hoodie'],
+            ['photo-1521572163474-6864f9cf17ab','Carry All Tee'],
+            ['photo-1591257447430-6e9638b50afc','XI Crewneck'],
+            ['photo-1588850561407-ed78c282e89b','Origin Cap'],
+          ].map(([id,label],i) => html`
+            <div key=${i} class="overflow-hidden relative group" onClick=${()=>go('shop')}>
+              <img src=${'https://images.unsplash.com/'+id+'?w=700&q=80'}
+                   alt=${label}
+                   class="w-full h-full object-cover img-fade group-hover:scale-105 transition-transform duration-700 cursor-pointer"/>
+              <div class="absolute bottom-0 left-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p class="font-mono text-chalk text-[9px] tracking-widest uppercase">${label}</p>
+              </div>
+            </div>
+          `)}
+        </div>
+
+        <!-- Mobile: single product photo strip -->
+        <div class="md:hidden h-56 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=900&q=80"
+               alt="Day One Hoodie" class="w-full h-full object-cover img-fade"/>
+        </div>
+
       </section>
 
       <!-- TICKER -->
@@ -524,13 +552,13 @@ function Home({ go }) {
       </div>
 
       <!-- FEATURED PRODUCTS -->
-      <section class="max-w-6xl mx-auto px-4 sm:px-6 py-20">
-        <div class="flex items-end justify-between mb-10">
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+        <div class="flex items-end justify-between mb-8">
           <div>
             <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">Vol. I — The Collection</p>
-            <h2 class="font-display font-black text-6xl sm:text-8xl uppercase leading-none reveal reveal-d1">New Arrivals</h2>
+            <h2 class="font-display font-semibold text-5xl sm:text-6xl uppercase leading-none reveal reveal-d1">New Arrivals</h2>
           </div>
-          <button onClick=${()=>go('shop')} class="hidden sm:block nav-link font-display font-bold text-sm tracking-widest uppercase text-stone hover:text-ink transition-colors reveal">
+          <button onClick=${()=>go('shop')} class="hidden sm:block nav-link font-display text-xs tracking-widest uppercase text-stone hover:text-ink transition-colors reveal">
             View All →
           </button>
         </div>
@@ -563,9 +591,9 @@ function Home({ go }) {
       </section>
 
       <!-- LOOKBOOK GRID -->
-      <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-14">
         <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">Lookbook</p>
-        <h2 class="font-display font-black text-6xl sm:text-8xl uppercase mb-10 leading-none reveal reveal-d1">How It's Worn</h2>
+        <h2 class="font-display font-semibold text-4xl sm:text-5xl uppercase mb-8 leading-none reveal reveal-d1">How It's Worn</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
           ${[
             { img:'https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&q=80', label:'Day One Hoodie', span:'row-span-2' },
@@ -584,14 +612,14 @@ function Home({ go }) {
       </section>
 
       <!-- STORY TEASER -->
-      <section class="bg-ink text-chalk py-24">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-0 items-stretch">
-          <div class="story-img aspect-square md:aspect-auto md:min-h-[520px] reveal">
-            <img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=800&q=80" alt="The eleven founders" class="img-fade"/>
+      <section class="bg-ink text-chalk py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-0 items-center">
+          <div class="brand-logo-wrap reveal">
+            <${BrandLogo} size=${240} light=${true}/>
           </div>
           <div class="flex flex-col justify-center px-0 md:px-14 py-12 md:py-0">
             <p class="font-mono text-gold text-[10px] tracking-[0.3em] uppercase mb-4 reveal">XI — Origin Story</p>
-            <h2 class="font-display font-black text-5xl sm:text-7xl uppercase leading-[0.9] mb-8 reveal reveal-d1">Eleven<br/>People.<br/>One Brand.</h2>
+            <h2 class="font-display font-semibold text-4xl sm:text-6xl uppercase leading-[0.95] mb-8 reveal reveal-d1">Eleven People.<br/>One Brand.</h2>
             <p class="text-chalk/60 leading-relaxed mb-4 reveal reveal-d2 text-sm">
               It started in a group chat. Eleven friends, one shared vision: clothing that meant something beyond the label. No investors. No committees. Just eleven people who decided to build something from nothing.
             </p>
@@ -607,9 +635,9 @@ function Home({ go }) {
       </section>
 
       <!-- TESTIMONIALS -->
-      <section class="max-w-6xl mx-auto px-4 sm:px-6 py-24">
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
         <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal text-center">Community</p>
-        <h2 class="font-display font-black text-6xl sm:text-7xl uppercase mb-14 reveal reveal-d1 text-center leading-none">What Members Say</h2>
+        <h2 class="font-display font-semibold text-4xl sm:text-5xl uppercase mb-10 reveal reveal-d1 text-center leading-none">What Members Say</h2>
         <div class="grid md:grid-cols-3 gap-6">
           ${testimonials.map((t,i) => html`
             <div key=${i} class="testi-card reveal reveal-d${i+1}">
@@ -631,7 +659,7 @@ function Home({ go }) {
       <section class="bg-gold/10 border-t border-b border-gold/20 py-16">
         <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
           <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">Stay Close</p>
-          <h2 class="font-display font-black text-5xl sm:text-7xl uppercase mb-4 reveal reveal-d1 leading-none">Member<br/>Drops First</h2>
+          <h2 class="font-display font-semibold text-4xl sm:text-5xl uppercase mb-4 reveal reveal-d1 leading-none">Member Drops First</h2>
           <p class="text-stone mb-8 reveal reveal-d2">Get early access to drops, member exclusives, and behind-the-scenes. Day one privilege.</p>
           <button onClick=${()=>go('newsletter')}
                   class="bg-ink text-chalk font-display tracking-widest uppercase px-10 py-4 text-sm hover:bg-gold transition-colors t-btn reveal reveal-d3">
@@ -704,7 +732,7 @@ function Shop({ go }) {
         <!-- Header -->
         <div class="mb-10">
           <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1">Collection</p>
-          <h1 class="font-display font-black text-7xl sm:text-9xl uppercase leading-none">Shop</h1>
+          <h1 class="font-display font-semibold text-6xl sm:text-7xl uppercase leading-none">Shop</h1>
         </div>
 
         <!-- Filter tabs -->
@@ -950,7 +978,7 @@ function StoryPage({ go }) {
       <!-- Founders grid -->
       <section class="max-w-6xl mx-auto px-4 sm:px-6 py-20">
         <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">The Eleven</p>
-        <h2 class="font-display font-black text-6xl sm:text-8xl uppercase mb-12 reveal reveal-d1 leading-none">Who Built This</h2>
+        <h2 class="font-display font-semibold text-5xl sm:text-6xl uppercase mb-12 reveal reveal-d1 leading-none">Who Built This</h2>
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
           ${FOUNDERS.map((f,i) => html`
             <div key=${f.num} class="founder-card reveal reveal-d${(i%4)+1}">
@@ -1184,7 +1212,7 @@ function NewsletterPage() {
     <div class="min-h-screen pt-20">
       <div class="max-w-2xl mx-auto px-4 sm:px-6 py-20">
         <p class="font-mono text-[10px] text-stone tracking-widest uppercase mb-1 reveal">Inner Circle</p>
-        <h1 class="font-display font-black text-6xl sm:text-8xl uppercase mb-4 reveal reveal-d1 leading-none">Newsletter</h1>
+        <h1 class="font-display font-semibold text-5xl sm:text-6xl uppercase mb-4 reveal reveal-d1 leading-none">Newsletter</h1>
         <p class="text-stone max-w-md mb-10 reveal reveal-d2">Drop alerts, member exclusives, and behind-the-scenes. No noise. Only signal.</p>
 
         <form onSubmit=${submit} class="space-y-5 reveal reveal-d3" noValidate>
