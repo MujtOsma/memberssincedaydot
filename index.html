@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 
-  <!-- ═══ TAILWIND — CDN must load before tailwind.config is set ═══ -->
+  <!-- ═══ TAILWIND — CDN loads first, config assigned after ═══ -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -39,15 +39,21 @@
   <!-- ═══ STYLES ═══ -->
   <link rel="stylesheet" href="style.css"/>
 </head>
-<body class="bg-bone text-ink font-body antialiased">
+<body style="background:#F2EDE4" class="bg-bone text-ink font-body antialiased">
 
   <div id="root"></div>
 
-  <!-- ═══ React 18 + ReactDOM + htm — UMD builds, no import map needed ═══ -->
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/htm@3/dist/htm.js"></script>
-
+  <!-- ═══ React 18 + htm — vendored locally, no CDN needed ═══ -->
+  <script src="vendor/react.min.js"></script>
+  <script src="vendor/react-dom.min.js"></script>
+  <script src="vendor/htm.js"></script>
+  <script>
+    window.onerror = function(msg, src, line, col, err) {
+      document.getElementById('root').innerHTML =
+        '<div style="padding:2rem;font-family:monospace;color:#c00;background:#fff2f2;border:1px solid #c00;margin:2rem">' +
+        '<strong>JS Error</strong><br>' + msg + '<br><small>' + src + ':' + line + '</small></div>';
+    };
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
