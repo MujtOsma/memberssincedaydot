@@ -565,17 +565,17 @@ function Home({ go }) {
       <!-- WOMEN'S EXCLUSIVE DROP -->
       <section class="relative overflow-hidden text-chalk" style=${{minHeight:'100svh'}}>
 
-        <!-- MOBILE BG: single gradient — ink fades into rose -->
+        <!-- MOBILE BG: single gradient — ink fades into pastel blush -->
         <div class="lg:hidden absolute inset-0 z-0"
-             style=${{background:'linear-gradient(to bottom,#0D0D0D 0%,#0D0D0D 28%,#4A1828 52%,#9A4562 76%,#C07888 100%)'}}/>
+             style=${{background:'linear-gradient(to bottom,#0D0D0D 0%,#0D0D0D 25%,#4A2030 48%,#C4788A 68%,#E8B4C0 84%,#F5D8DF 100%)'}}/>
 
         <!-- DESKTOP BG: left ink slab (diagonal right edge) -->
         <div class="hidden lg:block absolute inset-y-0 left-0 bg-ink z-0"
              style=${{width:'46%',clipPath:'polygon(0 0,100% 0,calc(100% - 72px) 100%,0 100%)'}}/>
 
-        <!-- DESKTOP BG: pink right panel (sweeps in from right) -->
+        <!-- DESKTOP BG: pastel pink right panel (sweeps in from right) -->
         <div class="women-panel hidden lg:block absolute inset-0 z-0"
-             style=${{background:'linear-gradient(140deg,#6D2A3F 0%,#A04D68 42%,#C47888 80%,#D4909E 100%)'}}/>
+             style=${{background:'linear-gradient(140deg,#C4788A 0%,#DFA8B4 38%,#EFC4CC 68%,#F5D8DF 100%)'}}/>
 
         <!-- DESKTOP: dark-to-transparent bleed over left edge of pink -->
         <div class="hidden lg:block absolute inset-y-0 z-10 pointer-events-none"
@@ -634,32 +634,32 @@ function Home({ go }) {
                 <div key=${i} class="relative overflow-hidden reveal"
                      style=${{
                        aspectRatio:'9/14',
-                       background:'rgba(0,0,0,0.30)',
-                       backdropFilter:'blur(12px)',
-                       border:'1px solid rgba(255,255,255,0.14)',
+                       background:'rgba(255,255,255,0.18)',
+                       backdropFilter:'blur(14px)',
+                       border:'1px solid rgba(255,255,255,0.35)',
                        transitionDelay: (i * 0.12) + 's'
                      }}>
                   <div class="absolute inset-[1px]" style=${{border:'1px solid rgba(255,255,255,0.05)'}}/>
                   <div class="absolute inset-0 flex flex-col items-center justify-center p-2 text-center">
                     <p class="font-mono font-bold leading-none"
-                       style=${{fontSize:'clamp(20px,5vw,42px)',color:'rgba(255,255,255,0.16)'}}>${num}</p>
-                    <div style=${{width:'16px',height:'1px',background:'rgba(196,150,58,0.5)',margin:'8px auto'}}/>
-                    <p class="font-display font-bold text-chalk uppercase leading-tight"
-                       style=${{fontSize:'clamp(8px,2.2vw,11px)',letterSpacing:'0.12em'}}>${name}</p>
+                       style=${{fontSize:'clamp(20px,5vw,42px)',color:'rgba(13,13,13,0.18)'}}>${num}</p>
+                    <div style=${{width:'16px',height:'1px',background:'rgba(140,60,70,0.55)',margin:'8px auto'}}/>
+                    <p class="font-display font-bold uppercase leading-tight"
+                       style=${{fontSize:'clamp(8px,2.2vw,11px)',letterSpacing:'0.12em',color:'rgba(13,13,13,0.75)'}}>${name}</p>
                     <p class="font-mono uppercase mt-1"
-                       style=${{fontSize:'clamp(6px,1.6vw,8px)',letterSpacing:'0.16em',color:'rgba(255,255,255,0.30)'}}>${sub}</p>
+                       style=${{fontSize:'clamp(6px,1.6vw,8px)',letterSpacing:'0.16em',color:'rgba(13,13,13,0.40)'}}>${sub}</p>
                   </div>
                   <div class="absolute bottom-2 inset-x-0 flex justify-center">
                     <p class="font-mono uppercase"
-                       style=${{fontSize:'clamp(5.5px,1.4vw,7px)',letterSpacing:'0.2em',color:'rgba(255,255,255,0.18)'}}>Reveal Pending</p>
+                       style=${{fontSize:'clamp(5.5px,1.4vw,7px)',letterSpacing:'0.2em',color:'rgba(13,13,13,0.28)'}}>Reveal Pending</p>
                   </div>
                 </div>
               `)}
             </div>
 
             <!-- Bottom label — clearly visible -->
-            <p class="font-mono uppercase mt-8 text-chalk/55 tracking-[0.38em]"
-               style=${{fontSize:'clamp(7px,1.8vw,9px)'}}>
+            <p class="font-mono uppercase mt-8 tracking-[0.38em]"
+               style=${{fontSize:'clamp(7px,1.8vw,9px)',color:'rgba(13,13,13,0.45)'}}>
               Women's Exclusive &nbsp;·&nbsp; Dropping 2025
             </p>
           </div>
