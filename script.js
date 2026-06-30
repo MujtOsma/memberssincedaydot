@@ -362,9 +362,9 @@ function Nav({ go, page }) {
         <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
 
           <!-- Logo -->
-          <button onClick=${()=>go('home')} class="font-display tracking-widest uppercase text-lg ${dark?'text-chalk':'text-ink'} hover:text-gold transition-colors leading-none flex flex-col items-start">
-            <span class="text-xl leading-none">MAC</span>
-            <span class="font-mono text-[8px] tracking-[0.22em] opacity-60 normal-case" style=${{fontFamily:'var(--font-mono)'}}>Members Apparel Collective</span>
+          <button onClick=${()=>go('home')} class="font-display tracking-tight uppercase ${dark?'text-chalk':'text-ink'} hover:text-gold transition-colors leading-none flex flex-col items-start">
+            <span class="text-sm sm:text-base leading-none font-bold tracking-[0.04em]">MMBRS SNC DY DT</span>
+            <span class="font-mono text-[8px] tracking-[0.22em] opacity-60 normal-case mt-1" style=${{fontFamily:'var(--font-mono)'}}>Members Apparel Collective</span>
           </button>
 
           <!-- Desktop links -->
@@ -607,8 +607,8 @@ function Home({ go }) {
           <!-- Left / Top: text panel -->
           <div class="flex flex-col justify-center px-8 sm:px-12 pt-24 pb-14 lg:py-0 lg:w-[46%]">
             <p class="font-mono text-gold/60 text-[9px] tracking-[0.42em] uppercase mb-4 reveal">· Women's Edit ·</p>
-            <h2 class="font-display font-extrabold text-chalk uppercase leading-[0.88] reveal reveal-d1"
-                style=${{fontSize:'clamp(30px,7.5vw,68px)'}}>
+            <h2 class="font-display font-bold text-chalk uppercase leading-[1.05] reveal reveal-d1"
+                style=${{fontSize:'clamp(24px,6vw,54px)'}}>
               Built<br/>Different
             </h2>
             <div class="flex items-center gap-3 mt-5 mb-4 reveal reveal-d2">
@@ -750,7 +750,7 @@ function Home({ go }) {
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
           <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
             <div>
-              <p class="font-display text-chalk text-2xl tracking-widest uppercase mb-0.5">MAC</p>
+              <p class="font-display font-bold text-chalk text-lg tracking-tight uppercase mb-0.5">MMBRS SNC DY DT</p>
               <p class="font-mono text-chalk/40 text-[9px] tracking-widest uppercase mb-3">Members Apparel Collective</p>
               <p class="text-sm leading-relaxed mb-6">${CONFIG.tagline}</p>
               <div class="flex gap-4">
